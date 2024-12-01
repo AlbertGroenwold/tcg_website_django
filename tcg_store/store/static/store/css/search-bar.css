@@ -1,0 +1,87 @@
+/* Container for logo, search bar, and buttons */
+.search-bar-container {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center vertically */
+    gap: 15px; /* Space between items */
+    padding: 10px 20px; /* Padding inside the container */
+    background-color: #ffffff; /* Background color */
+    border-bottom: 1px solid #dddddd; /* Border at the bottom */
+    width: 100%; /* Full width */
+}
+
+/* Logo */
+.brand {
+    flex-shrink: 0; /* Prevent the logo from shrinking */
+}
+
+.brand h2 {
+    margin: 0; /* Remove default margin */
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+    color: #007BFF; /* Logo color */
+}
+
+/* Search Bar */
+.search-input-short {
+    flex: 1; /* Make the search bar take remaining space */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.search-btn, .filter-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.search-btn {
+    background-color: #007BFF;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Filters Container */
+.filters-container {
+    display: none; /* Initially hidden */
+    padding: 15px 20px; /* Padding around the container */
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+    display: flex; /* Use flexbox for horizontal alignment */
+    gap: 20px; /* Space between filter groups */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Vertically center items */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+/* Individual Filter Group */
+.filter-group {
+    display: flex; /* Flex for label and select alignment */
+    flex-direction: column; /* Keep label above select */
+    align-items: flex-start; /* Align label and select to the start */
+    gap: 5px; /* Space between label and select */
+}
+
+/* Filter Label */
+.filter-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; /* Label text color */
+}
+
+/* Filter Dropdown */
+.filter-group select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: auto; /* Adjust to fit the content */
+    min-width: 150px; /* Set a minimum width for consistency */
+}

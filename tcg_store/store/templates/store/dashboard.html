@@ -1,0 +1,89 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Dashboard - TCG Store
+{% endblock %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'store/css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'store/css/global.css' %}">
+<style>
+    /* Main container layout for sidebar + content */
+    .main-container {
+        display: flex;
+        flex: 1;
+    }
+
+    /* Content container (next to the sidebar) */
+    .content-container {
+        flex: 1; /* Take up remaining space */
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+     /* Tile grid styling */
+    .tile-grid {
+        display: grid;
+        grid-gap: 15px; /* Space between tiles */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    /* Individual Tile */
+    .tile {
+        background-color: #f8f8f8; /* Off-white color */
+        border: 1px solid #000; /* Black border */
+        border-radius: 5px; /* Rounded corners */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 150px; /* Fixed height for tiles */
+        font-size: 18px;
+        font-weight: bold;
+        color: #333; /* Text color */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Sidebar -->
+    <div id="sidebar-container">
+        <!-- Sidebar content dynamically loaded here -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <h1>Dashboard Content</h1>
+        <p>Welcome to the dashboard! Below are your tiles:</p>
+
+        <div class="tile-grid">
+            {% for i in tiles %}
+                <div class="tile">{{ i }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Dynamically load the sidebar
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('/navigation')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading sidebar:', error));
+    });
+</script>
+{% endblock %}

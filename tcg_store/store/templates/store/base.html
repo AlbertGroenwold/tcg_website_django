@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TCG Store{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'store/css/global.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    {% include 'store/header.html' %}
+
+    <!-- Main Container -->
+    <div class="main-container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    {% include 'store/footer.html' %}
+
+    <script>
+        // Toggle filters visibility
+        function toggleFilters() {
+            const filtersContainer = document.getElementById('filters-container');
+            filtersContainer.style.display =
+                filtersContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Handle search execution
+        function handleSearch() {
+            const searchInput = document.getElementById('search-input').value.trim();
+            const productFilter = document.getElementById('product-filter').value;
+            const tcgFilter = document.getElementById('tcg-filter').value || 'pokemon';
+            const gradedFilter = document.getElementById('graded-filter').value || 'no';
+
+            let resultsText = searchInput ? `Searching for: "${searchInput}"` : 'Searching for: All products';
+
+            resultsText += `, Product: ${productFilter || 'All'}`;
+            resultsText += `, TCG: ${tcgFilter}`;
+            resultsText += `, Graded: ${gradedFilter}`;
+
+            console.log(resultsText); // Replace with your search handling logic
+            alert(resultsText);
+
+            // Hide filters after search
+            const filtersContainer = document.getElementById('filters-container');
+            filtersContainer.style.display = 'none';
+        }
+
+        // Handle "Enter" key for search
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const activeElement = document.activeElement;
+                const searchInput = document.getElementById('search-input');
+
+                if (activeElement === searchInput) {
+                    e.preventDefault(); // Prevent default behavior
+                    handleSearch(); // Perform search
+                }
+            }
+        });
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Verify OTP - TCG Store
+{% endblock %}
+
+{% block content %}
+<div class="otp-container">
+    <h2>Verify OTP</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="error">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'verify_otp' %}">
+        {% csrf_token %}
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" name="otp" placeholder="Enter the OTP sent to your email" required>
+        <button type="submit">Verify</button>
+    </form>
+</div>
+{% endblock %}

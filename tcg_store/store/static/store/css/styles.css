@@ -1,0 +1,58 @@
+/* Sidebar and Main Content */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-right: 1px solid #dddddd;
+            height: auto;
+        }
+        .sidebar h3 {
+            font-size: 18px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin: 5px 0;
+        }
+        .sidebar li a {
+            text-decoration: none;
+            color: #333333;
+            padding: 5px 0;
+            display: block;
+        }
+        .sidebar li a:hover {
+            color: #007BFF;
+        }
+        .nested {
+            display: none;
+        }
+        .nested li a {
+            font-size: 14px;
+            color: #555555;
+            padding-left: 20px;
+        }
+        .nested li a:hover {
+            color: #007BFF;
+        }
+        .nested .nested li a {
+            padding-left: 40px;
+        }
+        .active {
+            display: block;
+        }
+        .selected {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+
+}

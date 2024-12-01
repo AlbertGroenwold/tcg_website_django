@@ -1,0 +1,77 @@
+/* Sidebar and Main Content */
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-right: 1px solid #dddddd; /* Light gray border */
+    height: auto; /* Automatically adjust height based on content */
+    min-height: calc(100% - 40px); /* Slightly longer than the list */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar h3 {
+    font-size: 18px;
+    color: #007BFF; /* Blue heading color */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin: 5px 0; /* Space between list items */
+}
+
+.sidebar li a {
+    text-decoration: none; /* Remove underline */
+    color: #333333; /* Default text color */
+    padding: 5px 0;
+    display: block; /* Block display for full clickable area */
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.sidebar li a:hover {
+    color: #007BFF; /* Blue color on hover */
+}
+
+/* Nested List Styling */
+.sidebar .nested {
+    display: none; /* Hidden by default */
+    padding-left: 20px; /* Indentation for hierarchy */
+}
+
+.sidebar .nested li {
+    margin: 5px 0; /* Space between nested items */
+}
+
+.sidebar .nested li a {
+    font-size: 14px; /* Smaller font for nested items */
+    color: #555555; /* Lighter gray for nested items */
+}
+
+.sidebar .nested li a:hover {
+    color: #007BFF; /* Blue color on hover */
+}
+
+.sidebar .nested .nested li a {
+    padding-left: 20px; /* Further indentation for deeply nested items */
+}
+
+/* Active and Selected States */
+.sidebar .active {
+    display: block; /* Show active nested items */
+}
+
+.sidebar .selected {
+    font-weight: bold; /* Bold for selected items */
+    color: #007BFF; /* Blue for selected items */
+}

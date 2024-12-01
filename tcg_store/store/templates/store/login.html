@@ -1,0 +1,104 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Login - TCG Store
+{% endblock %}
+
+{% block styles %}
+<style>
+    .login-container {
+        background-color: #ffffff; /* Pure white card */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        padding: 30px;
+        max-width: 400px;
+        width: 100%;
+        margin: 50px auto; /* Center it with margin */
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        max-width: 100px; /* Limit logo size */
+        height: auto;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333333; /* Dark gray text */
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        color: #555555; /* Medium gray for labels */
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #dddddd; /* Light gray border */
+        border-radius: 5px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #007BFF; /* Blue focus for input fields */
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #007BFF; /* Blue button */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .error {
+        color: #ff0000; /* Red for error messages */
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="logo">
+        <img src="Replace_Logo_Here" alt="Logo"> <!-- Placeholder logo -->
+    </div>
+    <h2>Login</h2>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+    </form>
+</div>
+{% endblock %}

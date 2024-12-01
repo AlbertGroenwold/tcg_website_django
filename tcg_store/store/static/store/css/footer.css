@@ -1,0 +1,83 @@
+/* Footer Container */
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px 40px;
+    border-top: 2px solid #000;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Footer Row Layout */
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    gap: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+}
+
+/* Footer Columns */
+.footer-column {
+    flex: 1;
+    text-align: left;
+    min-width: 200px; /* Ensure columns don't shrink too much */
+}
+
+/* Footer Column Headings */
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Footer Column Links */
+.footer-column ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #007BFF; /* Hover color */
+}
+
+/* Social Icons */
+.footer .social-icons {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer .social-icons a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.footer .social-icons a:hover {
+    color: #007BFF;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #555;
+    border-top: 1px solid #000;
+    margin-top: 10px;
+}
