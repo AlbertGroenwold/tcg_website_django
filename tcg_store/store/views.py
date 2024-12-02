@@ -63,7 +63,7 @@ def signup_view(request):
         messages.success(request, "OTP sent to your email. Please verify.")
         return redirect('verify-otp')
 
-    return render(request, 'store/signup.html')
+    return render(request, 'store/portal/signup.html')
 
 
 # OTP verification view
@@ -83,7 +83,7 @@ def verify_otp_view(request):
             messages.error(request, "Invalid OTP. Please try again.")
             return redirect('verify_otp')
 
-    return render(request, 'store/verify_otp.html')
+    return render(request, 'store/portal/verify_otp.html')
 
 def login_view(request):
     # If the user is already authenticated, redirect to the profile page
@@ -101,7 +101,7 @@ def login_view(request):
         else:
             error = "Invalid username or password. Please try again."
 
-    return render(request, 'store/login.html', {'error': error})
+    return render(request, 'store/portal/login.html', {'error': error})
 
 def logout_view(request):
     logout(request)
@@ -109,7 +109,7 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-    return render(request, 'store/profile.html')
+    return render(request, 'store/header/profile.html')
 
 def home(request):
     category = request.GET.get("category", "Pokémon")
@@ -128,11 +128,11 @@ def home(request):
         "subsubcategory": subsubcategory,
         "current_data": current_data,
         "products": products,
-        'tiles': range(1, 45),
+        'tiles': range(1, 28),
     })
 
 def settings_view(request):
-    return render(request, "store/settings.html")
+    return render(request, "store/header/settings.html")
 
 # Component Views
 def header(request):

@@ -25,8 +25,15 @@
         function toggleFilters() {
             const filtersContainer = document.getElementById('filters-container');
             filtersContainer.style.display =
-                filtersContainer.style.display === 'block' ? 'none' : 'block';
+            filtersContainer.style.display === 'flex' ? 'none' : 'flex';
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const filtersContainer = document.getElementById("filters-container");
+            if (filtersContainer) {
+                filtersContainer.style.display = "none"; // Ensure it's hidden on load
+            }
+        });
 
         // Handle search execution
         function handleSearch() {

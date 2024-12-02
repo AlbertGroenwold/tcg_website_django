@@ -6,13 +6,79 @@ Dashboard - TCG Store
 
 {% block styles %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'store/css/sidebar.css' %}">
 <link rel="stylesheet" href="{% static 'store/css/global.css' %}">
 <style>
     /* Main container layout for sidebar + content */
     .main-container {
-        display: flex;
-        flex: 1;
+        display: flex; /* Flex layout for sidebar and content */
+        flex: 1; /* Ensures it fills the available space */
+        min-height: 100vh; /* Full viewport height */
+    }
+
+    /* Navigation Styling */
+    .sidebar {
+        width: 250px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-right: 1px solid #dddddd;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .sidebar h3 {
+        font-size: 18px;
+        color: #007BFF;
+        margin-bottom: 10px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin: 5px 0;
+    }
+
+    .sidebar li a {
+        text-decoration: none;
+        color: #333333;
+        padding: 5px 0;
+        display: block;
+        cursor: pointer;
+    }
+
+    .sidebar li a:hover {
+        color: #007BFF;
+    }
+
+    /* Nested List Styling */
+    .nested {
+        display: none; /* Initially hidden */
+        padding-left: 20px; /* Indentation for nested items */
+    }
+
+    .nested.active {
+        display: block; /* Show when active */
+    }
+
+    .selected {
+        font-weight: bold;
+        color: #007BFF;
+    }
+
+    /* Additional indentation for deeper levels */
+    .sidebar ul ul {
+        padding-left: 5px; /* Indent level 2 */
+    }
+
+    .sidebar ul ul ul {
+        padding-left: 10px; /* Indent level 3 */
+    }
+
+    .sidebar ul ul ul ul{
+        padding-left: 15px; /* Indent level 3 */
     }
 
     /* Content container (next to the sidebar) */
@@ -22,11 +88,11 @@ Dashboard - TCG Store
         background-color: #f9f9f9;
     }
 
-     /* Tile grid styling */
+    /* Tile Grid */
     .tile-grid {
         display: grid;
         grid-gap: 15px; /* Space between tiles */
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid layout */
         padding: 20px;
         background-color: #ffffff;
         border: 1px solid #ddd;
@@ -53,8 +119,35 @@ Dashboard - TCG Store
 {% block content %}
 <div class="main-container">
     <!-- Sidebar -->
-    <div id="sidebar-container">
-        <!-- Sidebar content dynamically loaded here -->
+    <div class="sidebar">
+        <h3>Navigation</h3>
+        <ul>
+            <li>
+                <a onclick="toggleNested(this)">Pokémon</a>
+                <ul class="nested">
+                    <li>
+                        <a onclick="toggleNested(this)">Sealed Product</a>
+                    </li>
+                    <li>
+                        <a onclick="toggleNested(this)">Opened Product</a>
+                        <ul class="nested">
+                            <li>
+                                <a onclick="toggleNested(this)">Scarlet and Violet</a>
+                                <ul class="nested">
+                                    <li><a onclick="selectItem(this)" href="#">Surging Sparks</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a onclick="toggleNested(this)">Sword and Shield</a>
+                                <ul class="nested">
+                                    <li><a onclick="selectItem(this)" href="#">Crown Zenith</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
     <!-- Main Content -->
@@ -73,17 +166,29 @@ Dashboard - TCG Store
 
 {% block scripts %}
 <script>
-    // Dynamically load the sidebar
-    document.addEventListener("DOMContentLoaded", function () {
-        fetch('/navigation')
-            .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('sidebar-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-    });
+    function toggleNested(element) {
+    const nested = element.nextElementSibling;
+    if (nested && nested.classList.contains('nested')) {
+        nested.classList.toggle('active');
+    }
+}
+
+function selectItem(element) {
+    // Remove the 'selected' class from all links
+    const allLinks = document.querySelectorAll('.sidebar a');
+    allLinks.forEach(link => link.classList.remove('selected'));
+
+    // Add 'selected' class to the clicked item and all its parents
+    element.classList.add('selected');
+    highlightParents(element);
+}
+
+function highlightParents(element) {
+    const parentLi = element.closest('ul').previousElementSibling;
+    if (parentLi) {
+        parentLi.classList.add('selected');
+        highlightParents(parentLi); // Recursive call to highlight all parents
+    }
+}
 </script>
 {% endblock %}

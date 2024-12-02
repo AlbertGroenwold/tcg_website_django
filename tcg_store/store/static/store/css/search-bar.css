@@ -6,7 +6,9 @@
     padding: 10px 20px; /* Padding inside the container */
     background-color: #ffffff; /* Background color */
     border-bottom: 1px solid #dddddd; /* Border at the bottom */
-    width: 100%; /* Full width */
+    max-width: 100%; /* Prevent horizontal scrolling */
+    overflow: hidden; /* Prevent content overflow */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Logo */
@@ -28,6 +30,8 @@
     font-size: 16px;
     border: 1px solid #cccccc;
     border-radius: 5px;
+    width: 100%; /* Responsive width */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
 /* Buttons */
@@ -48,24 +52,30 @@
     background-color: #0056b3;
 }
 
+.filter-btn {
+    background-color: #28a745;
+}
+
+.filter-btn:hover {
+    background-color: #1e7e34;
+}
+
+
 /* Filters Container */
 .filters-container {
-    display: none; /* Initially hidden */
-    padding: 15px 20px; /* Padding around the container */
-    background-color: #ffffff;
-    border-bottom: 1px solid #dddddd;
-    display: flex; /* Use flexbox for horizontal alignment */
+    display: flex; /* Use flexbox for horizontal layout */
     gap: 20px; /* Space between filter groups */
-    justify-content: flex-start; /* Align items to the left */
+    padding: 15px 20px; /* Padding around the container */
+    background-color: #ffffff; /* Background color */
+    border-bottom: 1px solid #dddddd; /* Bottom border */
     align-items: center; /* Vertically center items */
-    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 /* Individual Filter Group */
 .filter-group {
-    display: flex; /* Flex for label and select alignment */
-    flex-direction: column; /* Keep label above select */
-    align-items: flex-start; /* Align label and select to the start */
+    display: flex; /* Flexbox for vertical alignment */
+    flex-direction: column; /* Label above dropdown */
     gap: 5px; /* Space between label and select */
 }
 
@@ -82,6 +92,5 @@
     font-size: 14px;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    width: auto; /* Adjust to fit the content */
-    min-width: 150px; /* Set a minimum width for consistency */
+    min-width: 150px; /* Ensure consistent width */
 }
