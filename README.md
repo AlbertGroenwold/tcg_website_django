@@ -8,7 +8,7 @@
 
 4 Restart machine
 
-5 In the base of the repo, run the following command: python -m venv
+5 In the base of the repo, run the following command: python -m venv venv
 
 6 Install PyCharm Community
 
