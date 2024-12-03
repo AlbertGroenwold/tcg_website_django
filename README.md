@@ -6,21 +6,21 @@
 
 3 Clone the repo
 
-4 In the base of the repo, run the following command: python -m venv
+4 Restart machine
 
-3 Restart machine
+5 In the base of the repo, run the following command: python -m venv
 
-4 Install PyCharm Community
+6 Install PyCharm Community
 
-5 Open Pycharm, open the cloned project and open requirements.txt
+7 Open Pycharm, open the cloned project and open requirements.txt
 
-6 Click on the lightbulb > install all missing dependencies
+8 Click on the lightbulb > install all missing dependencies
 
-7 Wait for them to install, when done restart pycharm
+9 Wait for them to install, when done restart pycharm
 
-8 Run this command python tcg_store\manage.py runserver
+10 Run this command python tcg_store\manage.py runserver
 
-9 Access the website http://127.0.0.1:8000/
+11 Access the website http://127.0.0.1:8000/
 
-10 No need to restart everytime, make changes and just refresh the page
+12 No need to restart everytime, make changes and just refresh the page
 
